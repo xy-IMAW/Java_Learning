@@ -1,0 +1,39 @@
+import java.util.Scanner;
+public class BMI 
+{
+	private static double height,weight;
+	public static void main(String[] args) 
+	{
+		Scanner keyboard = new Scanner(System.in);
+		System.out.println("请分别输入你的身高(米)和体重(公斤)：");
+		try{
+		height=keyboard.nextDouble();
+		weight=keyboard.nextDouble();
+		bmiCom(height,weight);
+		}
+		catch(Exception e){
+		System.out.println("请输入正确的数据！");
+		}
+
+
+	}
+	public static void bmiCom(double height,double weight){
+	    double bmi;
+		bmi=weight/(height*height);
+		if(bmi>=35){
+			System.out.println("重度肥胖！");
+		}
+		else if(bmi>=30&&bmi<=34.9){
+			System.out.println("超重");
+		}
+		else if(bmi>=25&&bmi<=29.9){
+			System.out.println("偏重");
+		}
+		else if(bmi>=18.5&&bmi<=24.9){
+			System.out.println("正常");
+		}
+		else if(bmi<18.5){
+			System.out.println("偏轻");
+		}
+	}
+}
