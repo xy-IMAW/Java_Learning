@@ -3,7 +3,7 @@ import java.util.*;
 
 public class cc{
 	public static void main(String[] args){
-		System.out.println(NumberOf1(14));
+		System.out.println(Accounttype.FIXD);
 		
 	}
 	/*魔法币问题。
@@ -106,7 +106,7 @@ public class cc{
 		t2=date.getTime();
 		System.out.println("用时："+(t2-t1)+"ms");
 	}
-		public static int JumpFloorII(int n){
+	public static int JumpFloorII(int n){
 		return (int)Math.pow(2,n-1);
 		//return 1<<--n;???
 	}
@@ -125,10 +125,10 @@ public class cc{
 			for(int j=0;j<length;j++){
 				b[i]*=A[j];             
         }
-//			System.out.print(b[i]+",");
-			A[i]=t1;
+//		System.out.print(b[i]+",");
+		A[i]=t1;
         }
-        return b;
+		return b;
 	}
 	*/
 
@@ -137,23 +137,26 @@ public class cc{
 	求1+2+3+...+n，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。
 	思路：
 	*/
+	/*
 	public static int Sum_Solution(int n){
 				int t=n;
 				int a=1000;
 			boolean  value=	(t!=0)&&(a==(t+=Sum_Solution(n-1)));
 			return t;
 	}
+	*/
+
 
 	/*用两个栈模拟队列
 	思路：当栈1为空时直接进栈1，当栈1不为空时，先将栈1的元素移到栈2（从第一个元素开始执行，就可保证先出栈的元素比后出栈的先入栈）
 	栈1为空后node入栈，再把栈2元素返回到栈1.
 	*/
 	/*
-  Stack<Integer>stack1 = new Stack<Integer>
-  Stack<Integer>stack2 = new Stack<Integer>
-	  public static void push(int node){
-	  if(!stack.empty()){
-		 do{
+	Stack<Integer>stack1 = new Stack<Integer>
+	Stack<Integer>stack2 = new Stack<Integer>
+    public static void push(int node){
+		if(!stack.empty()){
+			do{
 			  int temp=stack1.pop();
 			  stack2.push(temp);
 			}
@@ -164,33 +167,60 @@ public class cc{
 			 stack1.push(temp);
 			}
 		while(!stack2.empty());
-	else
-		stack1.push(node);
+		else
+			stack1.push(node);
 	  
 
-	}
+		}
 	public static int pop(){
 		return stack1.pop();
-  }
-*/
+	}
+	*/
 
-public static int NumberOf1(int n) {
-	if(n!=0){
-        int count=1;
-        int c=n&(n-1);
-        while(c!=0){
-            c=n&(n-1);
-            count++;
-            n=n-1;
+	/*一个整数的二进制数有多少个1
+	思路：1.左移1，计数末尾几个1；2.n与n-1且运算，把末尾的1去掉（可跳过中间无用的零）去掉几次就有几个1.
+	*//*
+	public static int NumberOf1(int n) {
+
+		int count=0;
+			while(n!=0){
+				 n=n&(n-1);
+				count++;     
+        }
+        return count; 
+
+
+		}
+    */
+
+
+
+	/*整数区间有多少个1的问题
+	思路：
+	*//*
+	public static int NumberOf1Between1AndN_Solution(int n) {
+        int count=0;
+       int i=1;
+        for(i=1;i<=n;i*=10){
+            int a = n/i;
+            int b = n % i;
+            count = count +(a+8)/10*i;
+				if(a%10==1)
+				count+=(b+1);
         }
         return count;
-      
     }
+	*/
+	
 
-	else
-		return 0;
 
 
 }
+
+enum Accounttype{
+	SAVING,FIXD,ARR;
+	private Accounttype(){
+		System.out.println("its a accounttype");
+	}
 }
 	

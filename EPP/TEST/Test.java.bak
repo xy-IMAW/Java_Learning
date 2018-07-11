@@ -1,20 +1,78 @@
  import java.util.*;
- class Test{
+public class Test{
       public static void main(String agr[]){
-			System.out.println(countWays(6));
+			top[] tops = new top[2];
+			tops[0] = new son1("qq","001","QQ");
+			tops[1] = new son2("pp","002","PP");
+
+			tops[0] = (son1)tops[0];
+			tops[0].son1method();
+			tops[0].print();
+			//String a="this is son1";
+			tops[1] = (son2) tops[1];
+			tops[1].son2method();
+			tops[1].print();
+
+			for(top emm:tops){
+				emm.method();
+			}
+
 	     }
- 
-    public static int countWays(int n) {
-        // write code here
-		int r;
-        if(n==1)
-            return 1;
-        else if((n-1)%2==0){
-			 return (int)Math.pow(2,(n-1)/2);
-            
-		}
-        else
-		
-           return (int)(1+Math.pow(2,n-3));
-    }
+}
+
+ class top
+{
+	public String id;
+	private String name;
+
+	public top(String name,String id){
+		this.id = id ;
+		this.name = name;
+	}
+	public   void print(){};
+
+	public void method(){
+		System.out.println("this is father method\n");
+	}
+	public String getname(){
+		return this.name;
+	}
+}
+
+class son1 extends top
+{
+	public String father_name;
+	public son1(String name,String id,String father_name){
+		super(name,id);
+		this.father_name = father_name;
+	}
+	public void print(){
+		System.out.print("this is son1 etxtends method print "+this.id+" "+this.getname()+" "+this.father_name+"\n");
+	}
+	public void print(String ad){
+		System.out.println("this is extend method print "+ad+"\n");
+	}
+	public void method(){
+		System.out.print("this is son1 \n");
+	}
+	public void son1method(){
+		System.out.print("this is son1 method\n");
+	}
+}
+class son2 extends top
+{
+	public String father_name;
+	public son2(String name,String id,String father_name){
+		super(name,id);
+		this.father_name = father_name;
+	}
+	public void print(){
+		System.out.print("this is son2 extends method print "+this.id+" "+this.getname()+" "+this.father_name+"\n");
+	}
+	public void method(){
+		System.out.print("this is son2\n");
+	}
+	public void son2method(){
+		System.out.print("this is son2");
+	}
 }
